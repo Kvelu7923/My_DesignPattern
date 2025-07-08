@@ -1,12 +1,13 @@
 pipeline {
     agent any
     triggers {
-        cron('H * * * *')  // Runs every hour
+        cron('H * * * *')
     }
     stages {
-        stage('Example') {
+        stage('Build & Test') {
             steps {
-                echo 'Running every hour from GitHub Pipeline...'
+                echo 'Running Tests...'
+                bat 'mvn clean test'   // For Windows Jenkins agents
             }
         }
     }
